@@ -19,7 +19,7 @@ var femaleAkanNames = [
 ];
 
 /**
- * Initialize and invoke calcWeekDay function.
+ * Initialize calcWeekDay function.
  * The function calculates the day of the week from a specific date.
  * It returns the dayOfWeek as a zero-based index:: Sunday === 0;
  */
@@ -37,6 +37,22 @@ function calcWeekDay(form) {
 
   dayOfWeek = (dd + 2.6 * (mm + 1) + yc + yc / 4 + cc / 4 - 2 * cc - 1) % 7;
   return parseInt(dayOfWeek) - 1;
+}
+
+/**
+ * Initialize getAkanName function.
+ * The function calls the calcWeekDay function and get's the user gender .
+ * It returns the user's Akan Name with regards to their gender.
+ */
+function getAkanName(form) {
+  var weekDay = calcWeekDay(form);
+
+  var gender = form.gender.value;
+  if (gender === "Male") {
+    return maleAkanNames[weekDay];
+  } else {
+    return femaleAkanNames[weekDay];
+  }
 }
 
 var form = document.forms[0];

@@ -1,23 +1,11 @@
 // The names listed below are ordered by days from Sunday
-var maleAkanNames = [
-  "Kwasi",
-  "Kwadwo",
-  "Kwabena",
-  "Kwaku",
-  "Yaw",
-  "Kofi",
-  "Kwame"
-];
-var femaleAkanNames = [
-  "Akosua",
-  "Adwoa",
-  "Abenaa",
-  "Akua",
-  "Yaa",
-  "Afua",
-  "Ama"
-];
+var maleAkanNames, femaleAkanNames;
+var form;
 
+maleAkanNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
+femaleAkanNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
+
+form = document.forms[0];
 /**
  * Initialize calcWeekDay function.
  * The function calculates the day of the week from a specific date.
@@ -54,5 +42,3 @@ function getAkanName(form) {
     return femaleAkanNames[weekDay];
   }
 }
-
-var form = document.forms[0];

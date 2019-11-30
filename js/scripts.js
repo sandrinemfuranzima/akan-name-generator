@@ -41,4 +41,6 @@ function getAkanName() {
   } else {
     alert("Your Akan Name is: " + femaleAkanNames[weekDay]);
   }
+
+  return false;
 }

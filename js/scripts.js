@@ -23,15 +23,20 @@ var femaleAkanNames = [
  * The function calculates the day of the week from a specific date.
  * It returns the dayOfWeek as a zero-based index:: Sunday === 0;
  */
-function calcWeekDay(day, month, year) {
+function calcWeekDay(form) {
+  var dd, mm, yy;
   var cc, yc, dayOfWeek;
 
-  // cc = centuryCode; yc = yearCode;
-  cc = parseInt(year / 100);
-  yc = year % 100;
+  dd = parseInt(form.day.value);
+  mm = parseInt(form.month.value);
+  yy = parseInt(form.year.value);
 
-  dayOfWeek = (day + 2.6 * (month + 1) + yc + yc / 4 + cc / 4 - 2 * cc - 1) % 7;
+  // cc = centuryCode; yc = yearCode;
+  cc = parseInt(yy / 100);
+  yc = yy % 100;
+
+  dayOfWeek = (dd + 2.6 * (mm + 1) + yc + yc / 4 + cc / 4 - 2 * cc - 1) % 7;
   return parseInt(dayOfWeek) - 1;
 }
 
-calcWeekDay(12, 16, 1997);
+var form = document.forms[0];

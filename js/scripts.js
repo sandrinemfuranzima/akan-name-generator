@@ -11,7 +11,7 @@ form = document.forms[0];
  * The function calculates the day of the week from a specific date.
  * It returns the dayOfWeek as a zero-based index:: Sunday === 0;
  */
-function calcWeekDay(form) {
+function calcWeekDay() {
   var dd, mm, yy;
   var cc, yc, dayOfWeek;
 
@@ -32,10 +32,10 @@ function calcWeekDay(form) {
  * The function calls the calcWeekDay function and get's the user gender .
  * It returns the user's Akan Name with regards to their gender.
  */
-function getAkanName(form) {
-  var weekDay = calcWeekDay(form);
-
+function getAkanName() {
+  var weekDay = calcWeekDay();
   var gender = form.gender.value;
+
   if (gender === "Male") {
     return maleAkanNames[weekDay];
   } else {

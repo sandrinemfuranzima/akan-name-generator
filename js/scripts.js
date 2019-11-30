@@ -37,8 +37,8 @@ function getAkanName() {
   var gender = form.gender.value;
 
   if (gender === "Male") {
-    return maleAkanNames[weekDay];
+    alert("Your Akan Name is: " + maleAkanNames[weekDay]);
   } else {
-    return femaleAkanNames[weekDay];
+    alert("Your Akan Name is: " + femaleAkanNames[weekDay]);
   }
 }

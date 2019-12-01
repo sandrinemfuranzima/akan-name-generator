@@ -7,6 +7,16 @@ femaleAkanNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
 
 form = document.forms[0];
 
+function fetchFormData() {
+  let form = document.forms[0];
+
+  day = parseInt(form.day.value);
+  month = parseInt(form.month.value);
+  year = parseInt(form.year.value);
+  gender = form.gender.value;
+
+  return [day, month, year, gender];
+}
 /**
  * Initialize calcWeekDay function.
  * The function calculates the day of the week from a specific date.

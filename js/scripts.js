@@ -6,25 +6,41 @@ maleAkanNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
 femaleAkanNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
 
 form = document.forms[0];
+
 /**
  * Initialize calcWeekDay function.
  * The function calculates the day of the week from a specific date.
- * It returns the dayOfWeek as a zero-based index:: Sunday === 0;
  */
-function calcWeekDay() {
-  var dd, mm, yy;
-  var cc, yc, dayOfWeek;
+function calcWeekDay(dd, mm, yy) {
+  var dayOfMonth, monthOfYear, zeroBasedCentury, yearOfCentury;
+  var dayOfWeek;
 
-  dd = parseInt(form.day.value);
-  mm = parseInt(form.month.value);
-  yy = parseInt(form.year.value);
+  dayOfMonth = dd;
+  monthOfYear = mm;
+  // Split year to centuryCode & yearCode
+  zeroBasedCentury = parseInt(yy / 100);
+  yearOfCentury = yy % 100;
 
-  // cc = centuryCode; yc = yearCode;
-  cc = parseInt(yy / 100);
-  yc = yy % 100;
+  // Count Jan & Feb  as months 13 and 14 of the previous year.
+  if (mm <= 2) {
+    monthOfYear += 12;
+    yearOfCentury -= 1;
+  }
 
-  dayOfWeek = (dd + 2.6 * (mm + 1) + yc + yc / 4 + cc / 4 - 2 * cc - 1) % 7;
-  return parseInt(dayOfWeek) - 1;
+  dayOfWeek =
+    (dayOfMonth +
+      parseInt(
+        2.6 * (monthOfYear + 1) +
+          yearOfCentury +
+          parseInt(yearOfCentury / 4) +
+          parseInt(zeroBasedCentury / 4) +
+          5 * zeroBasedCentury
+      )) %
+    7;
+
+  // return dayOfWeek as a zero-based index
+  // dayOfWeek = (0 = Saturday, 1 = Sunday, 2 = Monday, ..., 6 = Friday)
+  return dayOfWeek;
 }
 
 /**

@@ -1,36 +1,50 @@
 // The names listed below are ordered by days from Sunday
-const maleAkanNames, femaleAkanNames;
+const maleAkanNames = [
+  "Kwame",
+  "Kwasi",
+  "Kwadwo",
+  "Kwabena",
+  "Kwaku",
+  "Yaw",
+  "Kofi"
+];
+const femaleAkanNames = [
+  "Ama",
+  "Akosua",
+  "Adwoa",
+  "Abenaa",
+  "Akua",
+  "Yaa",
+  "Afua"
+];
 
-maleAkanNames = ["Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi"];
-femaleAkanNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
-
+// This function collects the data from input fields
 function fetchFormData() {
   let form = document.forms[0];
   let day, month, year, gender;
 
+  gender = form.gender.value;
+
   day = parseInt(form.day.value);
   month = parseInt(form.month.value);
   year = parseInt(form.year.value);
-  gender = form.gender.value;
 
-  return [day, month, year, gender];
+  return [gender, day, month, year];
 }
 /**
  * Initialize calcWeekDay function.
  * The function calculates the day of the week from a specific date.
  */
 function calculateWeekDay(birthDate) {
-  let dayOfMonth, monthOfYear, zeroBasedCentury, yearOfCentury;
-
-  dayOfMonth = dd;
-  monthOfYear = mm;
+  let [dayOfMonth, monthOfYear, yearOfBirth] = birthDate;
+  let zeroBasedCentury, yearOfCentury;
 
   // Split year to centuryCode & yearCode
-  zeroBasedCentury = parseInt(yy / 100);
-  yearOfCentury = yy % 100;
+  zeroBasedCentury = parseInt(yearOfBirth / 100);
+  yearOfCentury = yearOfBirth % 100;
 
   // Count Jan & Feb  as months 13 and 14 of the previous year.
-  if (mm <= 2) {
+  if (monthOfYear <= 2) {
     monthOfYear += 12;
     yearOfCentury -= 1;
   }
@@ -52,18 +66,22 @@ function calculateWeekDay(birthDate) {
 }
 
 /**
- * Initialize getAkanName function.
- * The function calls the calcWeekDay function and get's the user gender .
- * It returns the user's Akan Name with regards to their gender.
+ * Initialize deriveAkanName function.
+ * The function calls the calcWeekDay function and derives the user gender
+ * from the Akan Name arrays defined at the top
  */
-function getAkanName(gender) {
-  let weekDay = calcWeekDay();
+function deriveAkanName() {
+  let formData = fetchFormData();
+  let userBirthDate, userGender, dayOfBirth;
 
-  if (gender === "Male") {
-    alert("Your Akan Name is: " + maleAkanNames[weekDay]);
+  [userGender, ...userBirthDate] = formData;
+  dayOfBirth = calculateWeekDay(userBirthDate);
+
+  if (userGender === "Male") {
+    alert("Your Akan Name is: " + maleAkanNames[dayOfBirth]);
   } else {
-    alert("Your Akan Name is: " + femaleAkanNames[weekDay]);
+    alert("Your Akan Name is: " + femaleAkanNames[dayOfBirth]);
   }
-
+  // Helps clear the input fields after retrieving the values
   return false;
 }

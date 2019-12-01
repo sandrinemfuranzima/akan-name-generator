@@ -1,14 +1,12 @@
 // The names listed below are ordered by days from Sunday
-var maleAkanNames, femaleAkanNames;
-var form;
+const maleAkanNames, femaleAkanNames;
 
 maleAkanNames = ["Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi"];
 femaleAkanNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
 
-form = document.forms[0];
-
 function fetchFormData() {
   let form = document.forms[0];
+  let day, month, year, gender;
 
   day = parseInt(form.day.value);
   month = parseInt(form.month.value);
@@ -21,12 +19,12 @@ function fetchFormData() {
  * Initialize calcWeekDay function.
  * The function calculates the day of the week from a specific date.
  */
-function calcWeekDay(dd, mm, yy) {
-  var dayOfMonth, monthOfYear, zeroBasedCentury, yearOfCentury;
-  var dayOfWeek;
+function calculateWeekDay(birthDate) {
+  let dayOfMonth, monthOfYear, zeroBasedCentury, yearOfCentury;
 
   dayOfMonth = dd;
   monthOfYear = mm;
+
   // Split year to centuryCode & yearCode
   zeroBasedCentury = parseInt(yy / 100);
   yearOfCentury = yy % 100;
@@ -37,7 +35,7 @@ function calcWeekDay(dd, mm, yy) {
     yearOfCentury -= 1;
   }
 
-  dayOfWeek =
+  let dayOfWeek =
     (dayOfMonth +
       parseInt(
         2.6 * (monthOfYear + 1) +
@@ -58,9 +56,8 @@ function calcWeekDay(dd, mm, yy) {
  * The function calls the calcWeekDay function and get's the user gender .
  * It returns the user's Akan Name with regards to their gender.
  */
-function getAkanName() {
-  var weekDay = calcWeekDay();
-  var gender = form.gender.value;
+function getAkanName(gender) {
+  let weekDay = calcWeekDay();
 
   if (gender === "Male") {
     alert("Your Akan Name is: " + maleAkanNames[weekDay]);

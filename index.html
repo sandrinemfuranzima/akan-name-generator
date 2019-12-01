@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -12,23 +15,108 @@
     <title>Akan Name Generator</title>
   </head>
   <body>
-    <h1>Akan Name Generator</h1>
-    <p>
-      Akan names are derived from Ghanian culture. Frequently in Ghana, children are given their first name as a 'day
-      name' which corresponds to the day in the week they were born.
-    </p>
-    <p>Enter your birthdate and gender below then click <strong>Submit</strong> to reveal your day name in Akan.</p>
-    <form action="#" onsubmit="deriveAkanName()">
-      <input type="number" min="1" max="31" name="day" placeholder="Day" required />
-      <input type="number" min="1" max="12" name="month" placeholder="Month" required />
-      <input type="number" min="1920" max="2019" name="year" placeholder="Year" required />
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender">
-        <option>Male</option>
-        <option>Female</option>
-      </select>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+      <h1>Akan Name Generator</h1>
+      <p>
+        The Akans are a meta-ethnicity who primarily live in Ghana and Ivory
+        Coast. They have a fairly unique naming system, which is based on the
+        day in the week a child is born, and on the gender of the child. So a
+        boy born on a Monday would be named Kwadwo or Koho, and a girl would be
+        called Adwoa. Each day has one or more variants, but there's usually not
+        much to choose from.
+      </p>
+      <p>
+        The table below shows the Akan names. If you can't quite recall the day
+        of the week you were born, consider using the name generator.
+      </p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>&nbsp;</td>
+            <th>Male</th>
+            <th>Female</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Sunday</th>
+            <td>Kwasi</td>
+            <td>Akosua</td>
+          </tr>
+          <tr>
+            <th>Monday</th>
+            <td>Kwadwo</td>
+            <td>Adwoa</td>
+          </tr>
+          <tr>
+            <th>Tuesday</th>
+            <td>Kwabena</td>
+            <td>Abenaa</td>
+          </tr>
+          <tr>
+            <th>Wednesday</th>
+            <td>Kwaku</td>
+            <td>Akua</td>
+          </tr>
+          <tr>
+            <th>Thursday</th>
+            <td>Yaw</td>
+            <td>Yaa</td>
+          </tr>
+          <tr>
+            <th>Friday</th>
+            <td>Kofi</td>
+            <td>Afua</td>
+          </tr>
+          <tr>
+            <th>Saturday</th>
+            <td>Kwame</td>
+            <td>Ama</td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="#">
+        <input
+          class="form-control"
+          type="number"
+          min="1"
+          max="31"
+          name="day"
+          placeholder="Day"
+          required
+        />
+        <input
+          class="form-control"
+          type="number"
+          min="1"
+          max="12"
+          name="month"
+          placeholder="Month"
+          required
+        />
+        <input
+          class="form-control"
+          type="number"
+          min="1920"
+          max="2019"
+          name="year"
+          placeholder="Year"
+          required
+        />
+        <select class="form-control" id="gender" name="gender">
+          <option disabled selected>Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        <button
+          class="btn btn-block btn-outline-dark"
+          onclick="getAkanName()"
+          type="submit"
+        >
+          Generate
+        </button>
+      </form>
+    </div>
   </body>
   <script src="js/scripts.js"></script>
 </html>

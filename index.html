@@ -26,14 +26,18 @@
           be called Adwoa. Each day has one or more variants, but there's
           usually not much to choose from.
         </p>
+        <hr class="my-4" />
         <p>
-          The table below shows the Akan names. If you can't quite recall the
-          day of the week you were born, consider using the name generator.
+          The table below shows a list of Akan names. If you can't quite recall
+          the day of the week you were born, consider using the name generator.
         </p>
       </div>
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
           <table class="table table-striped">
+            <caption>
+              <em>List of male and female Akan names.</em>
+            </caption>
             <thead>
               <tr>
                 <td>&nbsp;</td>
@@ -80,8 +84,8 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-5">
-          <form action="#">
+        <div class="col-md-4">
+          <form action="#" onsubmit="deriveAkanName()">
             <input
               class="form-control"
               type="number"
@@ -114,11 +118,7 @@
               <option>Male</option>
               <option>Female</option>
             </select>
-            <button
-              class="btn btn-block btn-outline-dark"
-              onclick="deriveAkanName()"
-              type="submit"
-            >
+            <button class="btn btn-block btn-outline-dark" type="submit">
               Generate
             </button>
           </form>
